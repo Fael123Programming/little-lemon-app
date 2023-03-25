@@ -1,14 +1,29 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, StyleSheet } from 'react-native';
+import colors from './Colors';
 
 // flex means the percentage of space to use from the parent component.
 
 export default Header = function({text}) {
     return (
-        <View style={{ flex: .1, backgroundColor: '#F4CE14', justifyContent: 'flex-end', alignItems: 'center'}}>
-            <Text style={{ fontSize: 30, color: 'black', fontWeight: 'bold' }}>
+        <View style={headerStyle.container}>
+            <Text style={headerStyle.title}>
                 {text}
             </Text>
         </View>
     );
 }
+
+const headerStyle = StyleSheet.create({
+    container: {
+        flex: .1, 
+        backgroundColor: colors.brown, 
+        justifyContent: 'flex-end', 
+        alignItems: 'center'
+    },
+    title: {
+        fontSize: 30, 
+        color: 'black', 
+        fontWeight: 'bold'
+    }
+});
