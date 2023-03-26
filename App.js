@@ -1,5 +1,4 @@
 import { StyleSheet, View } from 'react-native';
-import WelcomeScreen from './components/WelcomeScreen';
 import MenuItems from './components/MenuItems';
 import Header from './components/Header';
 import Footer from './components/Footer';
