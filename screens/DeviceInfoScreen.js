@@ -8,6 +8,8 @@ import {
     useColorScheme
 } from 'react-native';
 import colors from '../utils/Colors';
+// import { useAppState } from '@react-native-community/hooks';
+// import { useDeviceOrientation } from '@react-native-community/hooks';
 
 const DeviceInfoScreen = () => {
     const window = useWindowDimensions();
