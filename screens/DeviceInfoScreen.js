@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import {
     Text,
+    ScrollView,
     View,
     Platform,
     StyleSheet,
@@ -8,21 +9,22 @@ import {
     useColorScheme
 } from 'react-native';
 import colors from '../utils/Colors';
-import { useAppState } from '@react-native-community/hooks';
 // import { useDeviceOrientation } from '@react-native-community/hooks';
 
 const DeviceInfoScreen = () => {
     const window = useWindowDimensions();
     const colorScheme = useColorScheme();
     return (
-        <View style={deviceInfoStyle.container}>
-            <Text style={deviceInfoStyle.title}>Device Info</Text>
-            <Text style={deviceInfoStyle.regularText}>Theme: {colorScheme}</Text>
-            <Text style={deviceInfoStyle.regularText}>OS: {Platform.OS}</Text>
-            <Text style={deviceInfoStyle.regularText}>Screen width: {window.width}</Text>
-            <Text style={deviceInfoStyle.regularText}>Screen height: {window.height}</Text>
-            <Text style={deviceInfoStyle.regularText}>Screen font scale: {window.fontScale}</Text>
-        </View>
+        <ScrollView keyboardDismissMode={'on-drag'}>
+            <View style={deviceInfoStyle.container}>
+                <Text style={deviceInfoStyle.title}>Device Info</Text>
+                <Text style={deviceInfoStyle.regularText}>Theme: {colorScheme}</Text>
+                <Text style={deviceInfoStyle.regularText}>OS: {Platform.OS}</Text>
+                <Text style={deviceInfoStyle.regularText}>Screen width: {window.width}</Text>
+                <Text style={deviceInfoStyle.regularText}>Screen height: {window.height}</Text>
+                <Text style={deviceInfoStyle.regularText}>Screen font scale: {window.fontScale}</Text>
+            </View>
+        </ScrollView>
     );
 }
 
@@ -30,11 +32,11 @@ const deviceInfoStyle = StyleSheet.create({
     container: {
         flex: 1,
         justifyContent: 'center',
-        alignItems: 'center'
+        alignItems: 'center',
     },
     title: {
         fontSize: 36,
-        width: 400,
+        width: 350,
         height: 100,
         margin: 20,
         padding: 20,
@@ -43,7 +45,7 @@ const deviceInfoStyle = StyleSheet.create({
     },
     regularText: {
         fontSize: 30,
-        width: 400,
+        width: 350,
         height: 100,
         margin: 20,
         backgroundColor: colors.grey,
