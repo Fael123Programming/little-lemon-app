@@ -7,7 +7,8 @@ import {
     TextInput, 
     KeyboardAvoidingView, 
     Platform,
-    Image
+    Image,
+    useColorScheme
 } from 'react-native';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
@@ -15,10 +16,10 @@ import colors from '../utils/Colors';
 
 export default WelcomeScreen = () => {
     const [username, onChangeUsername] = useState('');
-
+    const colorScheme = useColorScheme();
     return (
         <KeyboardAvoidingView
-            style={welcomeStyle.container}
+            style={[welcomeStyle.container, colorScheme === 'dark' ? {backgroundColor: colors.black} : {backgroundColor: colors.white}]}
             behavior={Platform.OS === 'ios' ? 'padding' :  'height'}
         >   
             <Header text={'Greetings'}/>
@@ -35,50 +36,59 @@ export default WelcomeScreen = () => {
                         accessible={true}
                         accessibilityLabel={'Little Lemon logo'}
                     />
-                    <Text style={welcomeStyle.logoText}>Little Lemon</Text>
+                    <Text style={[welcomeStyle.logoText, colorScheme === 'dark' ? {color: colors.white} : {color: colors.black}]}>Little Lemon</Text>
                 </View>
+                <Text 
+                    style={[welcomeStyle.title, colorScheme === 'dark' ? {color: colors.white} : {color: colors.black}]} 
+                    numberOfLines={3}
+                >Welcome to Little Lemon, your local mediterranean bistro</Text>
                 <View>
-                    <Text 
-                        style={welcomeStyle.title} 
-                        numberOfLines={3}
-                    >Welcome to Little Lemon, your local mediterranean bistro</Text>
-                </View>
-                <View>
-                    <Text style={welcomeStyle.welcomeText}>
+                    <Text style={[welcomeStyle.welcomeText, colorScheme === 'dark' ? {color: colors.white} : {color: colors.black}]}>
                         Little Lemon is a charming neighborhood bistro that serves 
                         simple food and classic cocktails in a lively but casual environment. 
                         We would love to hear more about your experience with us!
                     </Text>
                 </View>
                 <TextInput
-                    style={welcomeStyle.input}
+                    style={
+                        [
+                            welcomeStyle.input, 
+                            colorScheme === 'dark' ? 
+                            {
+                                borderColor: colors.white,
+                            } : 
+                            {
+                                borderColor: colors.black,
+                            }
+                        ]
+                    }
                     value={username}
                     onChangeText={onChangeUsername}
                     placeholder={'Full name'}
                 />
                 <Image
-                    style={welcomeStyle.image}
+                    style={[welcomeStyle.image, colorScheme === 'dark' ? {borderColor: colors.white} : {borderColor: colors.black}]}
                     source={require('../img/paper.png')}
                     resizeMode={'cover'}
                     accessible={true}
                     accessibilityLabel={'Menu paper'}
                 />
                 <Image
-                    style={welcomeStyle.image}
+                    style={[welcomeStyle.image, colorScheme === 'dark' ? {borderColor: colors.white} : {borderColor: colors.black}]}
                     source={require('../img/lobster.png')}
                     resizeMode={'cover'}
                     accessible={true}
                     accessibilityLabel={'Lobster'}
                 />
                 <Image
-                    style={welcomeStyle.image}
+                    style={[welcomeStyle.image, colorScheme === 'dark' ? {borderColor: colors.white} : {borderColor: colors.black}]}
                     source={require('../img/orange.png')}
                     resizeMode={'cover'}
                     accessible={true}
                     accessibilityLabel={'Orange'}
                 />
                 <Image
-                    style={welcomeStyle.image}
+                    style={[welcomeStyle.image, colorScheme === 'dark' ? {borderColor: colors.white} : {borderColor: colors.black}]}
                     source={require('../img/pork_with_potatoes.png')}
                     resizeMode={'cover'}
                     accessible={true}
@@ -97,14 +107,12 @@ const welcomeStyle = StyleSheet.create({
     },
     title: { 
         fontSize: 26, 
-        color: colors.white, 
         textAlign: 'center', 
         padding: 30,
         fontStyle: 'italic'
     },
     logoText: {
         fontSize: 26, 
-        color: colors.white, 
         textAlign: 'center', 
         fontStyle: 'italic',
         padding: 20
@@ -116,7 +124,6 @@ const welcomeStyle = StyleSheet.create({
         padding: 50
     },
     welcomeText: { 
-        color: colors.white, 
         fontSize: 26, 
         textAlign: 'center', 
         padding: 30
@@ -128,9 +135,8 @@ const welcomeStyle = StyleSheet.create({
         padding: 10,
         marginBottom: 50,
         fontSize: 16,
-        borderColor: colors.black,
-        backgroundColor: colors.white,
-        color: colors.black,
+        color: colors.dark,
+        backgroundColor: colors.white
     },
     logo: {
         height: 100,
@@ -143,6 +149,6 @@ const welcomeStyle = StyleSheet.create({
         alignSelf: 'center',
         margin: 30,
         borderWidth: 1,
-        borderColor: colors.black
+        
     }
 });
