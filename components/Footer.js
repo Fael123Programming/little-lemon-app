@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
-import colors from './Colors';
+import colors from '../utils/Colors';
 
 export default Footer = function() {
     return (
@@ -16,7 +16,9 @@ function getCurrentYear() {
 
 const footerStyle = StyleSheet.create({
     container: {
-        backgroundColor: colors.brown
+        flex: .05,
+        backgroundColor: colors.brown,
+        justifyContent: 'center',
     },
     text: { 
         color: 'black', 

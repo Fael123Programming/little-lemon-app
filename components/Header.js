@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
-import colors from './Colors';
+import colors from '../utils/Colors';
 
 // flex means the percentage of space to use from the parent component.
 

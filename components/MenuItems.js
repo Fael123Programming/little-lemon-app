@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, Text, FlatList, SectionList, StyleSheet } from 'react-native';
-import colors from './Colors';
+import colors from '../utils/Colors';
 import Footer from './Footer';
 
 // const menuItemsToDisplay = [
@@ -85,11 +85,16 @@ const Header = () => <Text style={menuStyles.title}>View Menu</Text>;
 const MenuItems = () => {
     const renderItem = ({item}) => <Item props={{name: item.name, price: item.price}}/>;
 
-    const renderSectionHeader = ({section: {title, data}}) => <Text style={menuStyles.sectionHeader}>{title}</Text>;
+    const renderSectionHeader = ({section: {title}}) => (
+        <View style={menuStyles.sectionHeaderContainer}>
+            <Text style={menuStyles.sectionHeaderTitle}>{title}</Text>
+        </View>
+    );
     
     return (
         <View style={menuStyles.container}>
-            <SectionList 
+            <SectionList
+                keyExtractor={ (item, index) => item + index }
                 sections={menuItemsToDisplay}
                 renderItem={renderItem}
                 renderSectionHeader={renderSectionHeader}
@@ -138,8 +143,10 @@ const menuStyles = StyleSheet.create({
         borderBottomWidth: 1,
         borderColor: colors.yellow
     },
-    sectionHeader: {
-        backgroundColor: colors.yellow,
+    sectionHeaderContainer: {
+        backgroundColor: colors.yellow
+    },
+    sectionHeaderTitle: {
         color: colors.black,
         fontSize: 34,
         flexWrap: 'wrap',
