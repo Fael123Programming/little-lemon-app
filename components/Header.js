@@ -18,12 +18,13 @@ const headerStyle = StyleSheet.create({
     container: {
         flex: .1, 
         backgroundColor: colors.brown, 
-        justifyContent: 'flex-end', 
-        alignItems: 'center'
+        justifyContent: 'center', 
+        // alignItems: 'center'
     },
     title: {
         fontSize: 30, 
         color: 'black', 
-        fontWeight: 'bold'
+        fontWeight: 'bold',
+        textAlign: 'center',
     }
 });

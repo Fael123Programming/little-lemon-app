@@ -14,7 +14,7 @@ import colors from '../utils/Colors';
 import Footer from '../components/Footer';
 import Header from '../components/Header';
 
-const LoginScreen = () => {
+const LoginScreen = ({navigation}) => {
     const [password, onChangePassword] = useState('');
     const [email, onChangeEmail] = useState('');
     const [showLogin, setShowLogin] = useState(true);
@@ -84,7 +84,13 @@ const LoginScreen = () => {
                             />
                             <Pressable
                                 style={[loginStyles.button, {marginBottom: 313}]}
-                                onPress={() => setShowLogin(!showLogin)}
+                                onPress={() => {
+                                        navigation.reset({
+                                            index: 0, routes: [{name: 'Home'}]
+                                        });
+                                        setShowLogin(!showLogin);
+                                    }
+                                }
                             >
                                 <Text style={loginStyles.buttonText}>Log in</Text>
                             </Pressable>

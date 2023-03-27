@@ -92,7 +92,7 @@ const HomeScreen = () => {
                     />
                 )
             }
-            <Footer/>
+            {/* <Footer/> */}
         </KeyboardAvoidingView>
     );
 }
@@ -129,7 +129,7 @@ const homeStyles = StyleSheet.create({
         borderColor: colors.yellow
     },
     sectionHeaderContainer: {
-        backgroundColor: colors.brown
+        backgroundColor: colors.white
     },
     sectionHeaderTitle: {
         color: colors.black,

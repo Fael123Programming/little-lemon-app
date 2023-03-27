@@ -8,14 +8,15 @@ import {
     KeyboardAvoidingView, 
     Platform,
     Image,
-    useColorScheme
+    useColorScheme,
+    Pressable
 } from 'react-native';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import colors from '../utils/Colors';
 
-export default WelcomeScreen = () => {
-    const [username, onChangeUsername] = useState('');
+export default WelcomeScreen = ({navigation}) => {
+    // const [username, onChangeUsername] = useState('');
     const colorScheme = useColorScheme();
     return (
         <KeyboardAvoidingView
@@ -49,7 +50,13 @@ export default WelcomeScreen = () => {
                         We would love to hear more about your experience with us!
                     </Text>
                 </View>
-                <TextInput
+                <Pressable 
+                    style={welcomeStyle.button}
+                    onPress={() => navigation.navigate('Login')}
+                >
+                    <Text style={welcomeStyle.buttonText}>Hungry?!</Text>
+                </Pressable>
+                {/* <TextInput
                     style={
                         [
                             welcomeStyle.input, 
@@ -65,7 +72,7 @@ export default WelcomeScreen = () => {
                     value={username}
                     onChangeText={onChangeUsername}
                     placeholder={'Full name'}
-                />
+                /> */}
                 <Image
                     style={[welcomeStyle.image, colorScheme === 'dark' ? {borderColor: colors.white} : {borderColor: colors.black}]}
                     source={require('../img/paper.png')}
@@ -149,6 +156,21 @@ const welcomeStyle = StyleSheet.create({
         alignSelf: 'center',
         margin: 30,
         borderWidth: 1,
-        
+    },
+    button: {
+        padding: 15,
+        margin: 40,
+        backgroundColor: colors.brown,
+        borderColor: colors.brown,
+        borderWidth: 1,
+        borderRadius: 30,
+        width: 200,
+        alignSelf: 'center'
+    },
+    buttonText: {
+        fontSize: 26,
+        fontWeight: 'bold',
+        textAlign: 'center',
+        textAlignVertical: 'center'
     }
 });
