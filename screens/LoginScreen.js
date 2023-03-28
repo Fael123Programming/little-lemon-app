@@ -17,7 +17,6 @@ import Header from '../components/Header';
 const LoginScreen = ({navigation}) => {
     const [password, onChangePassword] = useState('');
     const [email, onChangeEmail] = useState('');
-    const [showLogin, setShowLogin] = useState(true);
 
     return (
         <KeyboardAvoidingView 
@@ -36,68 +35,49 @@ const LoginScreen = ({navigation}) => {
                         Welcome to Little Lemon
                     </Text>
                 </View>
-                {
-                    !showLogin && (
-                        <View style={[loginStyles.subheaderTitle, {marginBottom: 510}]}>
-                            <Text style={loginStyles.subheaderTitleText}>
-                               You are logged in!
-                            </Text>
-                        </View>
-                    )
-                }
-                {
-                    showLogin && (
-                        <View style={loginStyles.subheaderTitle}>
-                            <Text style={loginStyles.subheaderTitleText}>
-                                Login to continue
-                            </Text>
-                        </View>
-                    )
-                }
-                {
-                    showLogin && (
-                        <View style={loginStyles.loginContainer}>
-                            <TextInput
-                                value={email}
-                                onChangeText={onChangeEmail}
-                                style={loginStyles.input}
-                                placeholder={'E-mail'}
-                                keyboardType={'email-address'}
-                                maxLength={100}
-                                // onFocus={Alert.alert('E-mail address is blank')}
-                                onBlur={() => {
-                                        if (email.length == 0) {
-                                            Alert.alert('Please, fill in the e-mail field')
-                                        }
-                                    }
+                <View style={loginStyles.subheaderTitle}>
+                    <Text style={loginStyles.subheaderTitleText}>
+                        Login to continue
+                    </Text>
+                </View>
+                <View style={loginStyles.loginContainer}>
+                    <TextInput
+                        value={email}
+                        onChangeText={onChangeEmail}
+                        style={loginStyles.input}
+                        placeholder={'E-mail'}
+                        keyboardType={'email-address'}
+                        maxLength={100}
+                        onBlur={() => {
+                                if (email.length == 0) {
+                                    Alert.alert('Please, fill in the e-mail field')
                                 }
-                                clearButtonMode={'always'}
-                            />
-                            <TextInput 
-                                value={password}
-                                onChangeText={onChangePassword}
-                                style={loginStyles.input}
-                                placeholder={'Password'}
-                                secureTextEntry={true}
-                                maxLength={10}
-                                keyboardType={'default'}
-                            />
-                            <Pressable
-                                style={[loginStyles.button, {marginBottom: 313}]}
-                                onPress={() => {
-                                        navigation.reset({
-                                            index: 0, routes: [{name: 'Home'}]
-                                        });
-                                        setShowLogin(!showLogin);
-                                    }
-                                }
-                            >
-                                <Text style={loginStyles.buttonText}>Log in</Text>
-                            </Pressable>
-                        </View>
-                    )
-                }
-            <Footer/>
+                            }
+                        }
+                        clearButtonMode={'always'}
+                    />
+                    <TextInput 
+                        value={password}
+                        onChangeText={onChangePassword}
+                        style={loginStyles.input}
+                        placeholder={'Password'}
+                        secureTextEntry={true}
+                        maxLength={10}
+                        keyboardType={'default'}
+                    />
+                    <Pressable
+                        style={[loginStyles.button, {marginBottom: 313}]}
+                        onPress={() => {
+                                navigation.reset({
+                                    index: 0, routes: [{name: 'HomeMenu'}]
+                                });
+                            }
+                        }
+                    >
+                        <Text style={loginStyles.buttonText}>Log in</Text>
+                    </Pressable>
+                </View>
+                <Footer/>
             </ScrollView>
         </KeyboardAvoidingView>
     );

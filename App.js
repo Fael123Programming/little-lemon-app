@@ -1,6 +1,6 @@
-import WelcomeDeviceInfoScreen from './screens/WelcomeDeviceInfoScreen';
+import WelcomeDeviceInfoNavigator from './navigators/WelcomeDeviceInfoNavigator';
+import HomeMenuNavigator from './navigators/HomeMenuNavigator';
 import LoginScreen from './screens/LoginScreen';
-import HomeScreen from './screens/HomeScreen';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import colors from './utils/Colors';
@@ -11,7 +11,7 @@ function App() {
   return (
       <NavigationContainer>
         <Stack.Navigator 
-          initialRouteName='Welcome' 
+          initialRouteName='WelcomeDevice' 
           screenOptions={
             { 
               headerStyle: { backgroundColor: colors.grey },
@@ -24,13 +24,21 @@ function App() {
           }>
           <Stack.Screen 
             name='WelcomeDevice'
-            component={WelcomeDeviceInfoScreen} 
+            component={WelcomeDeviceInfoNavigator} 
             options={{ 
               title: 'Congratulations!',
             }}
           />
-          <Stack.Screen name='Login' component={LoginScreen} options={{title: 'Join us!'}}/>
-          <Stack.Screen name='Home' component={HomeScreen}/>
+          <Stack.Screen 
+            name='Login' 
+            component={LoginScreen} 
+            options={{title: 'Join us!'}}
+          />
+          <Stack.Screen 
+            name='HomeMenu' 
+            component={HomeMenuNavigator}
+            options={{headerShown: false}}
+          />
         </Stack.Navigator>
       </NavigationContainer>
   );

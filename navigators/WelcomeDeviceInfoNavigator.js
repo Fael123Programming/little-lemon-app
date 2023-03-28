@@ -1,11 +1,11 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import WelcomeScreen from './WelcomeScreen';
-import DeviceInfoScreen from './DeviceInfoScreen';
+import WelcomeScreen from '../screens/WelcomeScreen';
+import DeviceInfoScreen from '../screens/DeviceInfoScreen';
 import { Ionicons } from '@expo/vector-icons';
 
 const Tab = createBottomTabNavigator();
 
-const WelcomeDeviceInfoScreen = () => {
+const WelcomeDeviceInfoNavigator = () => {
     return (
         <Tab.Navigator 
             screenOptions={({ route }) => ({
@@ -22,6 +22,7 @@ const WelcomeDeviceInfoScreen = () => {
               tabBarActiveTintColor: 'black',
               tabBarInactiveTintColor: 'grey'
             })}
+            initialRouteName={'Welcome'}
         >
             <Tab.Screen name='Welcome' component={WelcomeScreen}/>
             <Tab.Screen name='DeviceInfo' component={DeviceInfoScreen}/>
@@ -29,4 +30,4 @@ const WelcomeDeviceInfoScreen = () => {
     );
 }
 
-export default WelcomeDeviceInfoScreen;
+export default WelcomeDeviceInfoNavigator;
