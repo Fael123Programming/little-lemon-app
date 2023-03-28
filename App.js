@@ -23,7 +23,7 @@ function App() {
             }
           }>
           <Stack.Screen 
-            name='Welcome'
+            name='WelcomeDevice'
             component={WelcomeDeviceInfoScreen} 
             options={{ 
               title: 'Congratulations!',
