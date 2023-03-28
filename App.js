@@ -1,9 +1,9 @@
 import WelcomeDeviceInfoNavigator from './navigators/WelcomeDeviceInfoNavigator';
 import HomeMenuNavigator from './navigators/HomeMenuNavigator';
 import LoginScreen from './screens/LoginScreen';
+import colors from './utils/Colors';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import colors from './utils/Colors';
 
 const Stack = createNativeStackNavigator();
 
