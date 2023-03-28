@@ -21,7 +21,8 @@ function App() {
               },
               headerTitleAlign: 'center'
             }
-          }>
+          }
+        >
           <Stack.Screen 
             name='WelcomeDevice'
             component={WelcomeDeviceInfoNavigator} 

@@ -20,7 +20,7 @@ const WelcomeDeviceInfoNavigator = () => {
                 return <Ionicons name={iconName} size={size} color={color}/>;
               },
               tabBarActiveTintColor: 'black',
-              tabBarInactiveTintColor: 'grey'
+              tabBarInactiveTintColor: 'grey',
             })}
             initialRouteName={'Welcome'}
         >
